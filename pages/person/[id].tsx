@@ -1,7 +1,7 @@
 import { TOP_FIVE_USERS } from "../../contants";
 
 const Person = ({ data }: any) => {
-  return <>{data.name}</>;
+  return <>{data?.name}</>;
 };
 
 export async function getStaticPaths() {
@@ -15,16 +15,12 @@ export async function getStaticPaths() {
   };
 }
 export async function getStaticProps({ params: { id } }: any) {
-  console.log(id);
+  const res = await fetch(`https://api.github.com/users/${id}`);
+  const data = await res.json();
   return {
     props: {
       title: "Person",
-      data: {
-        id: "GrahamCampbell",
-        name: "Graham Campbell",
-        avatar_url: "https://avatars1.githubusercontent.com/u/2829600?v=4",
-        location: "The United Kingdom",
-      },
+      data: data,
     },
   };
 }
