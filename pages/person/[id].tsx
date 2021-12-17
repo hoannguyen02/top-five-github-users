@@ -1,16 +1,16 @@
+import { TOP_FIVE_USERS } from "../../contants";
+
 const Person = ({ data }: any) => {
   return <>{data.name}</>;
 };
 
 export async function getStaticPaths() {
   return {
-    paths: ["GrahamCampbell", "fabpot", "weierophinney", "rkh", "josh"].map(
-      (fileName) => ({
-        params: {
-          id: fileName,
-        },
-      })
-    ),
+    paths: TOP_FIVE_USERS.map((fileName) => ({
+      params: {
+        id: fileName,
+      },
+    })),
     fallback: false,
   };
 }
