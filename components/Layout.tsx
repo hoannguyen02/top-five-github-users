@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Layout = ({ title, children }: any) => {
   return (
-    <>
+    <div className="layout">
       <Head>
         <title>Top 5 Github Users</title>
         <meta name='description' content='Top 5 Github Users' />
@@ -18,7 +18,7 @@ const Layout = ({ title, children }: any) => {
         {title || "Home"}
       </header>
       <main>{children}</main>
-    </>
+    </div>
   );
 };
 

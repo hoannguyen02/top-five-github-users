@@ -1,7 +1,22 @@
+/* eslint-disable @next/next/no-img-element */
 import { TOP_FIVE_USERS } from "../../contants";
+import styles from "../../styles/Person.module.css";
 
 const Person = ({ data }: any) => {
-  return <>{data?.name}</>;
+  return (
+    <div className={styles.personContainer}>
+      <img
+        className={styles.personAvatar}
+        alt={data.name}
+        title={data.name}
+        src={data.avatar_url}
+      />
+      <div>
+        <p className={styles.personName}>{data.name}</p>
+        <p>{data.location}</p>
+      </div>
+    </div>
+  );
 };
 
 export async function getStaticPaths() {
